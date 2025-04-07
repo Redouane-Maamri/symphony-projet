@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Client Details
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4 text-success">Client Details :</h1>
+       
+        <table class="table table-bordered table-striped">
+            <thead class="table-success">
+                <tr>
+                    <th>ID Etudiant</th>
+                    <th>Nom Etudiant</th>
+                    <th>Prenom Etudiant</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for client in data %}
+                <tr>
+                    <td>{{ client.getIdEtudiant }}</td>
+                    <td>{{ client.getNomEtd }}</td>
+                    <td>{{ client.getPrenomEtd }}</td>
+                    <td>{{ client.getAge }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

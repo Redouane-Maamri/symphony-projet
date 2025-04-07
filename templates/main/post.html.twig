@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="mb-4 fw-bold">Créer ou Modifier : </h1>
+            
+            {{ form_start(form) }}
+            
+            <!-- Champ Titre -->
+            <div class="form-group mb-3">
+                {{ form_label(form.title, null, {'label_attr': {'class': 'form-label fw-bold'}}) }}
+                {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Entrez un titre'}}) }}
+                {{ form_errors(form.title) }}
+            </div>
+
+            <!-- Champ Contenu -->
+            <div class="form-group mb-3">
+                {{ form_label(form.content, null, {'label_attr': {'class': 'form-label fw-bold'}}) }}
+                {{ form_widget(form.content, {'attr': {'class': 'form-control', 'placeholder': 'Saisissez le contenu'}}) }}
+                {{ form_errors(form.content) }}
+            </div>
+
+            <div class="form-group mb-3">
+                {{ form_label(form.auteur, null, {'label_attr': {'class': 'form-label fw-bold'}}) }}
+                {{ form_widget(form.auteur, {'attr': {'class': 'form-control', 'placeholder': 'Saisissez auteur'}}) }}
+                {{ form_errors(form.auteur) }}
+            </div>
+
+            <div class="form-group mb-3">
+                {{ form_label(form.statut, null, {'label_attr': {'class': 'form-label fw-bold'}}) }}
+                {{ form_widget(form.statut, {'attr': {'class': 'form-control', 'placeholder': 'Saisissez le statut'}}) }}
+                {{ form_errors(form.statut) }}
+            </div><br>
+
+            
+
+          
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                <a  class="btn btn-secondary">Annuler</a>
+            </div>
+
+            {{ form_end(form) }}<br>
+        </div>
+    </div>
+</div>
+{% endblock %}

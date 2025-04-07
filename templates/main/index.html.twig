@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<!-- Flash Messages -->
+{% for success in app.flashes('success') %}
+<div class="alert alert-info">
+    {{ success }}
+</div>
+{% endfor %}
+
+{% for update in app.flashes('update') %}
+<div class="alert alert-success">
+    {{ update }}
+</div>
+{% endfor %}
+
+{% for message in app.flashes('message') %}
+<div class="alert alert-primary">
+    {{ message }}
+</div>
+{% endfor %}
+
+{% for delete in app.flashes('delete') %}
+<div class="alert alert-danger">
+    {{ delete }}
+</div>
+{% endfor %}
+
+<!-- Add Post Button -->
+<div class="container mt-3">
+    <a href="{{ path('app_post') }}" class="btn btn-primary mt-2 ml-5">
+        <i class="fas fa-plus"></i> Ajouter un post
+    </a>
+
+    <!-- Table Header -->
+    <h1 class="mt-4 text-success">Post Details :</h1>
+
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-success">
+            <tr>
+                <th>ID</th>
+                <th>Post</th>
+                <th>Content</th>
+                <th>Auteur</th>
+                <th>Statut</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ps in post %}
+            <tr>
+                <td>{{ ps.getId }}</td>
+                <td>{{ ps.getTitle }}</td>
+                <td>{{ ps.getContent }}</td>
+                <td>{{ ps.getAuteur}}</td>
+                <td>{{ps.Statut}}</td>
+                <td>
+                    <a href="{{ path('edit_post', { id: ps.getId }) }}" class="btn btn-success">
+                        <i class="fas fa-edit"></i> 
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('delete_post', { id: ps.getId }) }}" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> 
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
